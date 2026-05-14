@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="amberCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe8b0" stop-opacity="0.95" />
+      <stop offset="48%" stop-color="#d8b979" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#d8b979" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="glassStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdf9a" stop-opacity="0.82" />
+      <stop offset="48%" stop-color="#54c5ba" stop-opacity="0.44" />
+      <stop offset="100%" stop-color="#d16f34" stop-opacity="0.68" />
+    </linearGradient>
+    <linearGradient id="beamFill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fff0c5" stop-opacity="0.62" />
+      <stop offset="42%" stop-color="#d8b979" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#54c5ba" stop-opacity="0" />
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.95 0 1 0 0 0.65 0 0 1 0 0.22 0 0 0 0.9 0" result="warm" />
+      <feMerge>
+        <feMergeNode in="warm" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+    <pattern id="microGrid" width="88" height="88" patternUnits="userSpaceOnUse">
+      <path d="M 88 0 L 0 0 0 88" fill="none" stroke="#d8b979" stroke-opacity="0.08" stroke-width="1" />
+    </pattern>
+    <style>
+      .base-image {
+        opacity: 0;
+        animation: baseReveal 8s ease-in-out infinite;
+      }
+
+      .ambient {
+        opacity: 0;
+        animation: ambientReveal 8s ease-in-out infinite;
+      }
+
+      .curtain {
+        animation: curtainCycle 8s ease-in-out infinite;
+      }
+
+      .scanner {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: scannerIn 8s ease-in-out infinite;
+      }
+
+      .beam {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: 52% 0%;
+        animation: beamSweep 8s ease-in-out infinite;
+      }
+
+      .scan-line {
+        opacity: 0;
+        animation: scanLine 8s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+      }
+
+      .field-grid {
+        opacity: 0;
+        animation: fieldReveal 8s ease-in-out infinite;
+      }
+
+      .panel {
+        filter: url(#glow);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      .panel-1 { animation: panel1Opacity 8s ease-in-out infinite, floatA 4.2s ease-in-out infinite; }
+      .panel-2 { animation: panel2Opacity 8s ease-in-out infinite, floatB 4.8s ease-in-out infinite; }
+      .panel-3 { animation: panel3Opacity 8s ease-in-out infinite, floatC 4.5s ease-in-out infinite; }
+      .panel-4 { animation: panel4Opacity 8s ease-in-out infinite, floatA 5.1s ease-in-out infinite; }
+      .panel-5 { animation: panel5Opacity 8s ease-in-out infinite, floatB 4.6s ease-in-out infinite; }
+
+      .pulse-dot {
+        opacity: 0;
+        animation: dotPulse 8s ease-in-out infinite;
+      }
+
+      .energy {
+        opacity: 0;
+        animation: energyTrace 8s ease-in-out infinite;
+      }
+
+      @keyframes curtainCycle {
+        0%, 12% { opacity: 1; }
+        26% { opacity: 0.82; }
+        48%, 88% { opacity: 0.16; }
+        100% { opacity: 1; }
+      }
+
+      @keyframes baseReveal {
+        0%, 18% { opacity: 0; transform: scale(1.035); }
+        46%, 88% { opacity: 0.58; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1.02); }
+      }
+
+      @keyframes ambientReveal {
+        0%, 15% { opacity: 0; }
+        34%, 88% { opacity: 0.88; }
+        100% { opacity: 0; }
+      }
+
+      @keyframes scannerIn {
+        0%, 7% { opacity: 0; transform: translateY(-16px) scale(0.96); }
+        18%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-8px) scale(0.98); }
+      }
+
+      @keyframes beamSweep {
+        0%, 18% { opacity: 0; transform: rotate(-13deg) scaleY(0.6); }
+        30% { opacity: 0.82; transform: rotate(-6deg) scaleY(0.98); }
+        52% { opacity: 0.92; transform: rotate(5deg) scaleY(1.08); }
+        76% { opacity: 0.46; transform: rotate(13deg) scaleY(0.95); }
+        100% { opacity: 0; transform: rotate(18deg) scaleY(0.7); }
+      }
+
+      @keyframes scanLine {
+        0%, 20% { opacity: 0; transform: translateY(-120px); }
+        30% { opacity: 0.95; }
+        72% { opacity: 0.82; transform: translateY(520px); }
+        100% { opacity: 0; transform: translateY(620px); }
+      }
+
+      @keyframes fieldReveal {
+        0%, 20% { opacity: 0; }
+        42%, 88% { opacity: 0.62; }
+        100% { opacity: 0; }
+      }
+
+      @keyframes panel1Opacity { 0%, 26% { opacity: 0; } 38%, 88% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes panel2Opacity { 0%, 32% { opacity: 0; } 44%, 88% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes panel3Opacity { 0%, 38% { opacity: 0; } 50%, 88% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes panel4Opacity { 0%, 44% { opacity: 0; } 56%, 88% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes panel5Opacity { 0%, 50% { opacity: 0; } 62%, 88% { opacity: 1; } 100% { opacity: 0; } }
+
+      @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
+      @keyframes floatB { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(18px); } }
+      @keyframes floatC { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+      @keyframes dotPulse {
+        0%, 40% { opacity: 0; transform: scale(0.75); }
+        55%, 86% { opacity: 0.9; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1.2); }
+      }
+
+      @keyframes energyTrace {
+        0%, 38% { opacity: 0; transform: scaleX(0.2); }
+        56%, 86% { opacity: 0.82; transform: scaleX(1); }
+        100% { opacity: 0; transform: scaleX(0.95); }
+      }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#020404" />
+  <image class="base-image" href="/assets/generated-no-text/hero-workbench-bg.png" x="230" y="-10" width="1400" height="788" preserveAspectRatio="xMidYMid slice" />
+  <rect class="ambient" width="1600" height="900" fill="url(#microGrid)" />
+  <ellipse class="ambient" cx="1010" cy="520" rx="560" ry="300" fill="#d8b979" opacity="0.08" filter="url(#softBlur)" />
+  <ellipse class="ambient" cx="760" cy="470" rx="420" ry="250" fill="#54c5ba" opacity="0.06" filter="url(#softBlur)" />
+
+  <g class="field-grid" filter="url(#glow)">
+    <path d="M420 705 L1335 705" stroke="#d8b979" stroke-opacity="0.48" />
+    <path d="M480 618 L1295 618" stroke="#54c5ba" stroke-opacity="0.18" />
+    <path d="M570 205 L570 705 M725 190 L725 705 M880 180 L880 705 M1035 168 L1035 705 M1190 155 L1190 705" stroke="#d8b979" stroke-opacity="0.16" />
+  </g>
+
+  <g class="scanner" filter="url(#glow)">
+    <line x1="1236" y1="104" x2="1365" y2="58" stroke="#d8b979" stroke-width="10" stroke-linecap="round" opacity="0.64" />
+    <line x1="1342" y1="68" x2="1450" y2="123" stroke="#d8b979" stroke-width="8" stroke-linecap="round" opacity="0.44" />
+    <circle cx="1192" cy="116" r="72" fill="rgba(5,8,9,0.72)" stroke="#d8b979" stroke-width="5" />
+    <circle cx="1192" cy="116" r="51" fill="none" stroke="#f5d99b" stroke-opacity="0.55" stroke-width="2" />
+    <ellipse cx="1180" cy="104" rx="40" ry="22" fill="url(#amberCore)" opacity="0.32" />
+    <circle cx="1458" cy="130" r="34" fill="rgba(4,6,7,0.88)" stroke="#d8b979" stroke-width="3" />
+    <line x1="1458" y1="164" x2="1458" y2="246" stroke="#d8b979" stroke-width="7" opacity="0.42" />
+    <ellipse cx="1458" cy="262" rx="82" ry="20" fill="rgba(216,185,121,0.16)" stroke="#d8b979" stroke-opacity="0.45" />
+  </g>
+
+  <polygon class="beam" points="1135,160 1258,155 1236,735 506,650" fill="url(#beamFill)" />
+  <rect class="scan-line" x="410" y="152" width="950" height="4" fill="#ffe2a5" filter="url(#glow)" />
+
+  <g class="panel panel-1">
+    <rect x="610" y="220" width="330" height="176" rx="14" fill="rgba(4,8,9,0.62)" stroke="url(#glassStroke)" stroke-width="2" />
+    <path d="M640 322 L696 258 L762 292 L820 250 L900 336" fill="none" stroke="#d8b979" stroke-width="3" />
+    <path d="M652 350 L715 324 L776 342 L846 312 L906 328" fill="none" stroke="#54c5ba" stroke-width="2" opacity="0.75" />
+    <circle cx="696" cy="258" r="5" fill="#ffe2a5" />
+    <circle cx="820" cy="250" r="5" fill="#54c5ba" />
+    <rect x="656" y="362" width="210" height="7" rx="3" fill="#d8b979" opacity="0.5" />
+  </g>
+
+  <g class="panel panel-2">
+    <rect x="950" y="304" width="292" height="164" rx="14" fill="rgba(4,8,9,0.62)" stroke="url(#glassStroke)" stroke-width="2" />
+    <path d="M980 388 C1018 345 1058 432 1094 388 S1172 350 1212 406" fill="none" stroke="#ffe2a5" stroke-width="3" />
+    <path d="M988 432 L1210 432" stroke="#54c5ba" stroke-opacity="0.46" />
+    <rect x="986" y="332" width="78" height="10" rx="5" fill="#54c5ba" opacity="0.46" />
+    <rect x="986" y="352" width="160" height="8" rx="4" fill="#d8b979" opacity="0.48" />
+  </g>
+
+  <g class="panel panel-3">
+    <rect x="500" y="462" width="352" height="176" rx="14" fill="rgba(4,8,9,0.66)" stroke="url(#glassStroke)" stroke-width="2" />
+    <path d="M538 556 L560 520 L584 588 L606 512 L628 560 L650 500 L672 596 L694 516 L716 552 L738 512 L760 586 L782 528 L812 552" fill="none" stroke="#ffe2a5" stroke-width="3" />
+    <rect x="542" y="492" width="88" height="8" rx="4" fill="#d8b979" opacity="0.58" />
+    <rect x="542" y="612" width="230" height="7" rx="3" fill="#54c5ba" opacity="0.34" />
+  </g>
+
+  <g class="panel panel-4">
+    <rect x="892" y="532" width="270" height="150" rx="14" fill="rgba(4,8,9,0.64)" stroke="url(#glassStroke)" stroke-width="2" />
+    <circle cx="996" cy="606" r="54" fill="none" stroke="#d8b979" stroke-opacity="0.52" stroke-width="3" />
+    <path d="M996 552 L1034 618 L968 632 Z" fill="rgba(84,197,186,0.14)" stroke="#54c5ba" stroke-width="2" />
+    <rect x="1072" y="570" width="54" height="7" rx="3" fill="#d8b979" opacity="0.58" />
+    <rect x="1072" y="594" width="72" height="7" rx="3" fill="#54c5ba" opacity="0.4" />
+    <rect x="1072" y="620" width="44" height="7" rx="3" fill="#d8b979" opacity="0.48" />
+  </g>
+
+  <g class="panel panel-5">
+    <rect x="1245" y="230" width="260" height="166" rx="14" fill="rgba(4,8,9,0.64)" stroke="url(#glassStroke)" stroke-width="2" />
+    <circle cx="1358" cy="308" r="50" fill="none" stroke="#54c5ba" stroke-opacity="0.7" stroke-width="3" />
+    <path d="M1308 308 C1340 250 1392 256 1410 314" fill="none" stroke="#ffe2a5" stroke-width="3" />
+    <rect x="1278" y="360" width="178" height="8" rx="4" fill="#d8b979" opacity="0.44" />
+  </g>
+
+  <g class="energy" filter="url(#glow)">
+    <path d="M560 718 C690 650 830 740 960 670 S1210 620 1360 690" fill="none" stroke="#d8b979" stroke-width="3" stroke-dasharray="12 18" />
+    <path d="M620 744 C740 696 900 760 1040 704 S1250 678 1410 728" fill="none" stroke="#54c5ba" stroke-width="2" stroke-dasharray="8 16" opacity="0.72" />
+  </g>
+
+  <g class="pulse-dot" filter="url(#glow)">
+    <circle cx="610" cy="705" r="8" fill="#ffe2a5" />
+    <circle cx="825" cy="676" r="7" fill="#54c5ba" />
+    <circle cx="1044" cy="705" r="9" fill="#ffe2a5" />
+    <circle cx="1260" cy="644" r="7" fill="#54c5ba" />
+    <circle cx="1410" cy="724" r="8" fill="#ffe2a5" />
+  </g>
+
+  <rect class="curtain" width="1600" height="900" fill="#000" />
+</svg>
