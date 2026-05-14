@@ -4,6 +4,7 @@ node_modules/
 .tmp-npm-cache/
 dist/
 output/
+.firebase/
 .playwright-cli/
 
 .env
