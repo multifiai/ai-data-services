@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "nexi-lab-888"
+  },
+  "targets": {
+    "nexi-lab-888": {
+      "hosting": {
+        "monet": [
+          "monet-data-ai"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
